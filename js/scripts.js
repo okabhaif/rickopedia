@@ -19,7 +19,7 @@ var repository = (function() {
     }
 
     function showDetails(item) {
-        repository.loadDetails(item).then(function() {
+        loadDetails(item).then(function() {
             showModal(item);
         });
     }
@@ -30,19 +30,25 @@ var repository = (function() {
         }
     }
 
+
+
     function getAll() {
         return rickopedia;
     }
 
     function getCharacters(results) {
+      var moreCharacters = [];
         $.each(results, function(i) {
             var $character = {
                 name: results[i].name,
                 detailsUrl: results[i].url,
             };
+
             add($character);
-            console.log($character);
+            moreCharacters.push($character);
+                      console.log('getCharacters', $character);
         });
+        return moreCharacters
     }
 
 //reference https://www.sitepoint.com/jquery-infinite-scrolling-demos/
@@ -66,7 +72,7 @@ var repository = (function() {
                     if (win.height() + win.scrollTop()
                                 == $(document).height()) {
                         if (!next) {
-                            url = apiUrl;
+                            next = apiUrl;
                         }
 
                         if (next && !loading) {
@@ -76,9 +82,9 @@ var repository = (function() {
                                 })
                                 .then(function(nextResponse) {
                                     next = nextResponse.info.next;
-                                    getCharacters(nextResponse.results)
+                                    var moreCharacters = getCharacters(nextResponse.results)
 
-                                    nextResponse.results.forEach(function(character) {
+                                    moreCharacters.forEach(function(character) {
                                         addListItem(character);
                                     });;
 
