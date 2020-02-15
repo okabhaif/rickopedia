@@ -72,10 +72,12 @@ var repository = (function() {
                     if (win.height() + win.scrollTop()
                                 == $(document).height()) {
                         if (!next) {
-                            next = apiUrl;
+                            next = url;
+                            console.log(url);
                         }
 
                         if (next && !loading) {
+                          //need to add a loading message
                             $('#loading').show();
                             return $.ajax(next, {
                                     dataType: 'json'
@@ -105,6 +107,8 @@ var repository = (function() {
                 // Now we add the details to the item
                 item.imageUrl = details.image;
                 item.name = details.name;
+                item.type = details.type;
+                item.gender = details.gender;
                 item.species = details.species;
                 item.origin = details.origin.name;
 
@@ -139,6 +143,12 @@ var repository = (function() {
 
         var $species = $('<p>Species: ' + item.species + '</p>');
         ($modal).append($species);
+
+        var $type = $('<p>Type: ' + item.type + '</p>');
+        ($modal).append($type);
+
+        var $gender = $('<p>Species: ' + item.gender + '</p>');
+        ($modal).append($gender);
 
         var $origin = $('<p>Origin: ' + item.origin + '</p>');
         ($modal).append($origin);
