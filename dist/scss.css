@@ -35,6 +35,8 @@ ul {
 }
 
 .rickopedia {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   height: 650px;
   overflow-y: scroll;
