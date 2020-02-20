@@ -130,7 +130,7 @@ var repository = (function() {
     var $type = $("<p>Type: " + item.type + "</p>");
     $modal.append($type);
 
-    var $gender = $("<p>Species: " + item.gender + "</p>");
+    var $gender = $("<p>Gender: " + item.gender + "</p>");
     $modal.append($gender);
 
     var $origin = $("<p>Origin: " + item.origin + "</p>");
