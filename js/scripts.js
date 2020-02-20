@@ -76,8 +76,7 @@ var repository = (function() {
               $("#loading").show();
               return $.ajax(next, {
                 dataType: "json"
-              })
-              .then(function(nextResponse) {
+              }).then(function(nextResponse) {
                 next = nextResponse.info.next;
                 var moreCharacters = getCharacters(nextResponse.results);
 
@@ -101,6 +100,7 @@ var repository = (function() {
         item.imageUrl = details.image;
         item.name = details.name;
         item.type = details.type;
+        item.status = details.status;
         item.gender = details.gender;
         item.species = details.species;
         item.origin = details.origin.name;
@@ -127,14 +127,21 @@ var repository = (function() {
     var $species = $("<p>Species: " + item.species + "</p>");
     $modal.append($species);
 
-    var $type = $("<p>Type: " + item.type + "</p>");
-    $modal.append($type);
+    if (item.type) {
+      var $type = $("<p>Type: " + item.type + "</p>");
+      $modal.append($type);
+    }
 
     var $gender = $("<p>Gender: " + item.gender + "</p>");
     $modal.append($gender);
 
     var $origin = $("<p>Origin: " + item.origin + "</p>");
     $modal.append($origin);
+
+    if (item.status) {
+      var $status = $("<p>Status: " + item.status + "</p>");
+      $modal.append($status);
+    }
   }
 
   return {
