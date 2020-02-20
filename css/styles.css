@@ -12,7 +12,7 @@
   size: 500px;
 
 }
-.headerImg {
+.header-img {
   margin: 0;
   width:100%;
   padding: 0;
@@ -39,7 +39,7 @@ text-align: center;
 margin-bottom: 0
 }
 
-.Rickopedia{
+.rickopedia{
   justify-content: center;
   height: 650px;
   overflow-y : scroll;
@@ -65,7 +65,7 @@ margin-bottom: 0
   transition: 0.3s;
 }
 
-.toTop {
+.to-top {
   margin: auto;
   text-align: center;
   font-family: 'Teko', sans-serif;
@@ -109,7 +109,7 @@ margin-bottom: 0
   border-top: 0 none;
 }
 
-#characterName {
+#character-name {
   font-family: 'Teko', sans-serif;
   color: #030;
   margin: 0 auto;
@@ -125,6 +125,6 @@ p {
 }
 
 @media (min-width: @screen-sm-min) {
- .btn-dark, .toTop { min-width: 400px;
+ .btn-dark, .to-top { min-width: 400px;
 }
 }

@@ -4,12 +4,12 @@ var repository = (function() {
     var $modalContainer = $('.modal');
 
     function addListItem(character) {
-        var $rickopediaList = $('.rickopediaList');
+        var $rickopediaList = $('.rickopedia-list');
 
         var $listItem = $('<li></li>');
         $rickopediaList.append($listItem);
 
-        var $button = $('<button class="btn btn-dark col-lg-8 col-sm button--li" data-toggle="modal" data-target="#modalContainer">' + character.name + '</button>');
+        var $button = $('<button class="btn btn-dark col-lg-8 col-sm button--li" data-toggle="modal" data-target="#modal-container">' + character.name + '</button>');
         $listItem.append($button);
 
         ($button).on('click', function(event) {
@@ -50,7 +50,6 @@ var repository = (function() {
         return moreCharacters
     }
 
-//reference https://www.sitepoint.com/jquery-infinite-scrolling-demos/
     function loadList(url) {
 
         if (!url) {
@@ -64,13 +63,10 @@ var repository = (function() {
                 var next = response.info.next;
                 getCharacters(response.results);
 
-//scroll to bottom of screen event listener
-//updated code to target bottom of rickopedia div - used potato as var to make it easier to work with!
-                var potato = $('#potato');
+//event listener targets bottom of div to load data
                 var loading = false;
-
                 jQuery(function($) {
-            $('#potato').on('scroll', function() {
+            $('#rickopedia-scroll').on('scroll', function() {
                 if(Math.ceil($(this).scrollTop()) + $(this).innerHeight() >= $(this)[0].scrollHeight) {
 
 
@@ -120,19 +116,14 @@ var repository = (function() {
     }
 
     function showModal(item) {
-        // Clear all existing modal content
-        console.log(item);
-
-        // Add the new modal content
-
+      //modal content
         var $title = $('.modal-title');
         ($title).text(item.name);
-//main details
+
         var $modal = $('.modal-body');
         ($modal).empty();
-        console.log($modal);
 
-        var $img = $('<img class="characterImage img-fluid"></img>');
+        var $img = $('<img class="character-image img-fluid"></img>');
         $img.attr('src', item.imageUrl);
         ($modal).append($img);
 
@@ -148,7 +139,6 @@ var repository = (function() {
         var $origin = $('<p>Origin: ' + item.origin + '</p>');
         ($modal).append($origin);
     }
-
 
     return {
         add: add,
@@ -167,7 +157,7 @@ repository.loadList().then(function() {
     });
 });
 
-var $toTop = $('.toTop');
+var $toTop = $('.to-top');
 $toTop.on('click', function(){
-  $('#potato').scrollTop(0);
+  $('#rickopedia-scroll').scrollTop(0);
 });
